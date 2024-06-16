@@ -283,6 +283,7 @@ def contact():
         return render_template(
             'contact.html', h1=h1, subheading=subheading, image=image, logged_in=current_user.is_active)
     elif request.method == 'POST':
+        image = "static/assets/img/contact-bg.jpg"
         my_email = "jrydel92@gmail.com"
         pw = os.environ.get('EMAIL_PW')
         full_name = request.form['name']
@@ -296,7 +297,7 @@ def contact():
             connection.starttls()
             connection.login(user=my_email, password=pw)
             connection.sendmail(from_addr=my_email, to_addrs=my_email, msg=full_email)
-        return render_template("confirmation.html", logged_in=current_user.is_active)
+        return render_template("confirmation.html", logged_in=current_user.is_active, image=image)
 
 
 if __name__ == "__main__":
