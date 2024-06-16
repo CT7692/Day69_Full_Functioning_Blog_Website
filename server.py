@@ -16,7 +16,7 @@ import smtplib
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(32)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 Bootstrap5(app)
 
